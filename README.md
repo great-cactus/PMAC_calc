@@ -10,16 +10,6 @@ This project provides three main calculation tools for spectroscopic analysis:
 2. **Planck Mean Absorption Length**: Optical thickness calculations based on spectral integration
 3. **Polynomial Fitting**: Curve fitting tools for temperature-dependent absorption data
 
-## Features
-
-- HITRAN database integration for accurate spectroscopic data
-- Voigt line profile calculations for absorption coefficients
-- Temperature and pressure-dependent calculations
-- Blackbody radiation integration
-- Polynomial fitting with temperature threshold splitting
-- CSV output for further analysis
-- Visualization capabilities
-
 ## File Structure
 
 - `main.py`: Calculate Planck mean absorption coefficients vs temperature
@@ -36,7 +26,7 @@ This project provides three main calculation tools for spectroscopic analysis:
 - `hapi`: HITRAN database interface
 
 ### HITRAN Database Setup
-1. Create a free HITRAN account at https://hitran.org/
+1. Create a free [HITRAN]( https://hitran.org/) account
 2. Download the `hapi.py` library from HITRAN
 3. Place `hapi.py` in your project directory
 
@@ -68,7 +58,7 @@ python calc_Lp.py
 - `species_name`: Target molecular species
 - `moleculeID`: HITRAN molecule ID
 
-**Output**: 
+**Output**:
 - Console output with calculated absorption length
 - `CSV/{species}_T{temp}_P{pressure}.csv` with spectral data
 
@@ -85,21 +75,9 @@ python fit.py
 - `ORDER`: Polynomial order (default: 6)
 - `T_THRESH`: Temperature threshold for fitting [K]
 
-**Output**: 
+**Output**:
 - `coeffs_{species}.dat`: Polynomial coefficients
 - Visualization plot
-
-## HITRAN Molecule IDs
-
-| Species | Molecule ID |
-|---------|------------|
-| H2O     | 1          |
-| CO2     | 2          |
-| CO      | 5          |
-| CH4     | 6          |
-| H2CO    | 20         |
-| H2O2    | 25         |
-| SF6     | 30         |
 
 ## Physical Constants
 
@@ -123,3 +101,9 @@ The calculations are based on:
 - CSV outputs are saved in `CSV/` directory (for calc_Lp.py)
 - Ensure sufficient disk space for HITRAN database cache
 - Temperature ranges should be physically reasonable for the species
+
+## References
+You can learn how to calculate PMCA.
+
+1. H. Zhang, M. F. Modest, Evaluation of the Planck-mean absorption coefficients from HITRAN and HITEMP databases, Journal of Quantitative Spectroscopy and Radiative Transfer, 73 (2002) 649--653.
+https://doi.org/10.1016/S0022-4073(01)00178-9
