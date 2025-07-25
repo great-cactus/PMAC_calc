@@ -93,7 +93,6 @@ The calculations are based on:
 - Planck mean absorption coefficient: $\kappa_P = \frac{\int_0^{\infty} \kappa(\nu) I_b(\nu,T) d\nu}{\int_0^{\infty} I_b(\nu,T) d\nu}$
 - Planck mean absorption length: $L_p = \int_0^{\infty} \kappa(u) G(u) du$ where $u = \frac{hc\omega}{kT}$
 - Weighting function: $G(u) = \frac{15u^3}{\pi^4(e^u-1)}$
-- Reference: Y. Ju et al., PCI 27 (1998), 2691
 
 ## Notes
 
@@ -107,3 +106,9 @@ You can learn how to calculate PMCA.
 
 1. H. Zhang, M. F. Modest, Evaluation of the Planck-mean absorption coefficients from HITRAN and HITEMP databases, Journal of Quantitative Spectroscopy and Radiative Transfer, 73 (2002) 649--653.
 https://doi.org/10.1016/S0022-4073(01)00178-9
+
+
+You can learn the influences of radiation heat loss and radiation reabsorption,
+and you can leanr how to calculate the optical thickness.
+
+2. Y. Ju, G. Masuya, P.D. Ronney, Effects of radiative emission and absorption on the propagation and extinction of premixed gas flames, Symposium (International) on Combustion, 27 (1998) 2619--2626.
