@@ -4,9 +4,9 @@ from scipy.integrate import trapz
 from hapi import *
 import time
 
-## ==
-## ....Constants
-## ==
+# ==
+# ....Constants
+# ==
 T_ref  = 296.              # Referenced Temperature        [K]
 P_ref  = 1.                # Referenced Pressure           [atm.]
 h      = 6.62607015E-34    # Plank constant                [j * s]
@@ -15,8 +15,8 @@ k      = 1.380649E-23      # Boltzmann constant            [j * K-1]
 Const1 = 2.*np.pi*h*c0**2  # The first radiation constant  [j * cm2 * s-1]
 Const2 = h*c0/k            # The second radiation constant [m * K]
 sigma  = 5.670374419E-8    # Stefan-Boltzmann constant     [W * m-2 * K-4]
-## ==
-##
+# ==
+#
 nu_begin = 0               # Wavenumber at fetching start  [cm-1]
 nu_end   = 100000          # Wavenumber at fetching end    [cm-1]
 # ==
@@ -57,13 +57,13 @@ def main():
         print(f'kp: {kp[i]:.4E} @ {T_arr[i]:.3E} [K]')
     df = pd.DataFrame({'T[K]': T_arr, 'kp[cm-1 * atm-1]': kp})
     df.to_csv(f'PMAC_{species_name}.csv', index=False)
-## ==
-##
+# ==
+#
 
 
-## ==
+# ==
 # .... Functions
-## ==
+# ==
 def Ib(T):  # Total blackbody intensity [W * m-2]
     """
     Calculate the total blackbody intensity at temperature T.

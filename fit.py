@@ -8,6 +8,7 @@ T_THRESH = 800  # Threshold temperature for converting the fitting [K]
 COEF = 1E2      # COEF determine the unit,
 #                 if COEF == 1E2, [atm-1 * m-1], elif COEF == 1, [atm-1 * cm-1]
 
+
 def main():
     # .... Set target species
     target_speces = 'H2CO'
@@ -23,12 +24,13 @@ def main():
     # ... Check your polynomials by showing the figure
     T_Low = df[df['T[K]'] <= T_THRESH]['T[K]']
     T_High = df[df['T[K]'] >= T_THRESH]['T[K]']
-    kp_Low = func(T_Low, poptLow[0], poptLow[1], poptLow[2], poptLow[3], poptLow[4], poptLow[5])
-    kp_High = func(T_High, poptHigh[0], poptHigh[1], poptHigh[2], poptHigh[3], poptHigh[4], poptHigh[5])
+    kp_Low = func(T_Low, poptLow)
+    kp_High = func(T_High, poptHigh)
     y_sci = np.concatenate([kp_Low, kp_High])
 
-    plot(df['T[K]'],df['kp[cm-1 * atm-1]']*COEF, y_sci)
+    plot(df['T[K]'], df['kp[cm-1 * atm-1]']*COEF, y_sci)
     output('coeffs_{}.dat'.format(target_speces), poptLow, poptHigh)
+
 
 def get_polys(df):
     T = df['T[K]'].values
@@ -38,6 +40,7 @@ def get_polys(df):
 
     return popt
 
+
 def func(x, *params):
     y = np.zeros_like(x)
     for i, param in enumerate(params):
@@ -45,12 +48,14 @@ def func(x, *params):
 
     return y
 
+
 def plot(x, y, y_sci):
     fig, ax = plt.subplots(1,1)
     ax.scatter(x, y, alpha=0.3, label='original')
     ax.plot(x, y_sci, color='red', label='scipy curve_fit')
     plt.legend(loc='best')
     plt.show()
+
 
 def output(file_name, poptLow, poptHigh):
     with open(file_name, 'w') as fw:
